@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+  Health Leaders Initiative - design system
+  Navy + periwinkle medical/academic palette (sampled from the HLI brand).
+*/
+
+@theme {
+  /* Brand palette */
+  --color-ink: #0a1130;
+  --color-navy: #131e4f;
+  --color-navy-700: #1c2a63;
+  --color-navy-600: #26377d;
+  --color-royal: #3a51b0;
+  --color-periwinkle: #6a7ed8;
+  --color-periwinkle-300: #93a3e6;
+  --color-periwinkle-200: #b9c3f0;
+  --color-mist: #eef1fb;
+  --color-mist-200: #dfe4f8;
+  --color-mist-300: #cdd5f2;
+  --color-aqua: #4fb9c9;
+  --color-cream: #f7f8fd;
+
+  /* Fonts (wired via next/font in layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* Motion */
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-22px) translateX(10px); }
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -1000; }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #131e4f;
+}
+
+* {
+  scroll-margin-top: 6rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-periwinkle) 40%, transparent);
+  color: var(--color-ink);
+}
+
+/* Utilities */
+@utility container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility gradient-text {
+  background-image: linear-gradient(120deg, var(--color-navy), var(--color-periwinkle) 70%, var(--color-aqua));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass {
+  background: color-mix(in srgb, white 70%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-royal);
+}
